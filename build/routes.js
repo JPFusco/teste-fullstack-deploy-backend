@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const veiculos_1 = __importDefault(require("./controllers/veiculos"));
+const usuarios_1 = __importDefault(require("./controllers/usuarios"));
+const ensureAuthenticated_1 = __importDefault(require("./middlewares/ensureAuthenticated"));
+const routes = (0, express_1.Router)();
+routes.post('/sign-up', usuarios_1.default.cadastrarUsuario);
+routes.post('/sign-in', usuarios_1.default.logarUsuario);
+routes.use(ensureAuthenticated_1.default);
+routes.get('/veiculos', veiculos_1.default.obterVeiculos);
+routes.get('/veiculos/:id', veiculos_1.default.obterVeiculo);
+routes.post('/veiculos', veiculos_1.default.cadastrarVeiculo);
+routes.put('/veiculos/:id', veiculos_1.default.atualizarVeiculoCompleto);
+routes.patch('/veiculos/:id', veiculos_1.default.atualizarVeiculoParcial);
+routes.delete('/veiculos/:id', veiculos_1.default.excluirVeiculo);
+exports.default = routes;

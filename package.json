@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/index.ts",
-    "start": "tsc "
+    "build": "tsc "
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
