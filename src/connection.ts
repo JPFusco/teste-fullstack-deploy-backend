@@ -10,6 +10,7 @@ const config: Knex.Config = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     port: Number(process.env.DB_PORT),
+    ssl: true,
   },
 };
 
